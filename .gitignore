@@ -1,0 +1,47 @@
+# Ambiente virtual
+.venv/
+venv/
+
+# Cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VS Code
+.vscode/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Builds/distribuição
+build/
+dist/
+
+# Cache de ferramentas
+.pytest_cache/
+.mypy_cache/
+
+# Arquivos de ambiente
+.env
+
+# Cobertura de testes
+htmlcov/
+.coverage
+
+# Jupyter
+.ipynb_checkpoints/
+
+# PyInstaller
+*.spec
+
+# Arquivos do PPlay/Pygame que possam surgir
+*.bak
