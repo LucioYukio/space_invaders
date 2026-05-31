@@ -1,5 +1,6 @@
 from PPlay import keyboard
 import settings
+from enemy import *
 from PPlay import mouse
 m = mouse
 #-----MENU-----
@@ -38,6 +39,7 @@ def seleciona():
     if m.Mouse().is_over_object(settings.botao_start):
         if m.Mouse().is_button_pressed(1):
             settings.variavel_de_estado = "jogo"
+            set_game()
     if m.Mouse().is_over_object(settings.botao_dificuldade):
         if m.Mouse().is_button_pressed(1) and cliclou_agora:
             settings.variavel_de_estado = "dificuldade"
@@ -58,15 +60,18 @@ def tela_dificuldade():
         if m.Mouse().is_button_pressed(1):
             settings.dificuldade = 1
             settings.tempo_recarga = settings.dificuldade
+            set_game()
             settings.variavel_de_estado = "jogo"
     if m.Mouse().is_over_object(settings.botao_medio):
         if m.Mouse().is_button_pressed(1):
             settings.dificuldade = 2
             print(settings.dificuldade)
+            set_game()
             settings.variavel_de_estado = "jogo"
     if m.Mouse().is_over_object(settings.botao_dificil):
         if m.Mouse().is_button_pressed(1):
             settings.dificuldade = 3
+            set_game()
             settings.variavel_de_estado = "jogo"
     settings.tempo_recarga = settings.dificuldade
 # Desenha os botoes de dificuldade
@@ -75,3 +80,6 @@ def tela_dificuldade():
     settings.botao_dificil.draw()
 #-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
+def set_game():
+    matriz_inimigo(settings.mat_inimigo)
+    settings.vida = 3
