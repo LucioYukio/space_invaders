@@ -1,22 +1,34 @@
 from PPlay import window
 from random import randint
 from PPlay import  sprite
-from PPlay.mouse import *
 from PPlay import keyboard
 from typing import List
 
 variavel_de_estado = "menu"
 
+cont = 0
+
+atingiu_inimigo = False
+
 quantidade_linhas_matriz_monstro = 0
 quantidade_colunas_matriz_monstro = 0
 
-tempo_fps = 2
+cont_tempo =0
+frames = 0
+fps_atual =0
 
+
+
+pontos = 0
+rank = []
 
 tot_tiro_inimigo = []
 
 tot_tiro_player = []
 mat_inimigo : List[List[sprite.Sprite]] = []
+
+agravante = 1
+
 
 dificuldade = 1
 tempo_recarga_player = 0.25
@@ -25,13 +37,13 @@ tempo_atual_player = dificuldade-0.5
 distorcao_temporal = randint(0, 30)
 
 #dificuldade*0.5*distorcao_temporal*0.1
-tempo_recarga_inimigo = 0.5
+tempo_recarga_inimigo = 1
 tempo_atual_recarga_inimigo = 0
 
 movimentacao_inimigo = 1/dificuldade
 tempo_atual_inimigo = 0
 
-tela = window.Window(1200, 600)
+tela = window.Window(1500, 900)
 teclado = keyboard.Keyboard()
 botao_start = sprite.Sprite("assets/botoes/start.png")
 botao_dificuldade = sprite.Sprite("assets/botoes/dificuldade.png")
@@ -65,6 +77,9 @@ timer_1_seg = 1
 timer_zerado = 0
 
 velocidade_movimento_inimigo = 0.5
+
+
+
 
 
 invencievel = False

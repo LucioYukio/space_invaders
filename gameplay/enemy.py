@@ -1,17 +1,16 @@
-from multiprocessing.spawn import old_main_modules
 from typing import List
 from random import randint, choice
 from PPlay import sprite
 import settings
-from settings import velocidade_movimento_inimigo
+from math import sqrt
 
 
 #-----INIMIGO-----
 
 # Cria a matriz dos inimigos, bota o sprite e define a posição inicial deles, recebe uma matriz vazia e a quantidade de linhas (l) e de colunas (c) pra criar a matriz
-def matriz_inimigo(mat: List[List[sprite.Sprite]]):
-    l = 3 + (settings.dificuldade // 2)
-    c = 6 + settings.dificuldade
+def matriz_inimigo(mat: List[List[sprite.Sprite]], agravante):
+    l = int(1 + settings.dificuldade + sqrt(agravante))
+    c = int(4 + settings.dificuldade * 2 + sqrt(agravante) * 1.5)
     print(l,c)
     mat.clear()
     for i in range(l):
@@ -40,7 +39,7 @@ def movimento_inimigo(mat:List[List[sprite.Sprite]]):
         for i in mat:
             for j in i:
                 j.x += settings.velocidade_movimento_inimigo * settings.dificuldade/2
-            
+
         if mat[0][-1].x + inimigo.width >= settings.tela.width or mat[0][-1].x + settings.velocidade_movimento_inimigo > settings.tela.width and settings.velocidade_movimento_inimigo>0:
             for a in mat:
                 for b in a:
@@ -50,7 +49,7 @@ def movimento_inimigo(mat:List[List[sprite.Sprite]]):
                 for i in mat:
                     for j in i:
                         j.x += settings.tela.width + settings.velocidade_movimento_inimigo - mat[0][-1]
-        elif mat[0][0].x <= settings.   tela.width/11 and settings.velocidade_movimento_inimigo < 0:
+        elif mat[0][0].x <= (settings.linha.x + settings.linha.width) and settings.velocidade_movimento_inimigo < 0:
             settings.velocidade_movimento_inimigo *= -1
             for a in mat:
                 for b in a:
