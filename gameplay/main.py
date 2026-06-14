@@ -1,39 +1,38 @@
-from combat import colisao_tiro
-from combat import dano_player
+from combat import *
 from player import *
-from enemy import  *
 from settings import *
-import settings
 from menu import *
+import pygame
 cont = agora = 0
 tempo = 1
 estado = True
 #matriz_inimigo(settings.mat_inimigo, 3, 5)
 fps_cont = agora = 0
-set_game()
 while True:
+
+
+
     settings.e_imortal_agora += settings.tela.delta_time()
     if settings.e_imortal_agora >= settings.e_imortal:
         estado = not estado
         settings.e_imortal_agora = 0
 
 
-
-    fps_cont += 1
-    agora += settings.tela.delta_time()
- #   if agora != 0 and fps_cont != 0:
-        #print(1/(agora/fps_cont))
-
-    tela.set_background_color("black")
     posicao_botao()
     sair()
-
-    if variavel_de_estado == "menu":
+    if settings.variavel_de_estado == "menu":
+        tela.set_background_color("black")
         seleciona()
         desenha_botao()
 
+
+    if settings.variavel_de_estado == "rank":
+        ler_rank()
+
+
     if settings.variavel_de_estado == "jogo":
         fundo.draw()
+        fps()
         desenha_inimigo()
         tiro_inimigo(settings.mat_inimigo)
         movimento_nave()
@@ -55,7 +54,7 @@ while True:
                 nave.draw()
         else:
             nave.draw()
-        colisao_tiro(settings.mat_inimigo, 3, 5)
+        colisao_tiro(settings.mat_inimigo)
     elif settings.variavel_de_estado == "dificuldade":
         tela.set_background_color("black")
 
